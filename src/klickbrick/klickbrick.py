@@ -9,7 +9,7 @@ def start():
     subparsers = parser.add_subparsers(
     title="subcommands", help="hello commands")
     hello_parser = subparsers.add_parser("hello", help="hello message")
-    parser.add_argument("-n", "--name",
+    hello_parser.add_argument("-n", "--name",
                         help="Your name ",
                         required=False)
 
