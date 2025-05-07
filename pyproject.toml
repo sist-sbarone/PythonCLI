@@ -1,5 +1,5 @@
 [project]
-name = "pythoncli"
+name = "klickbrick"
 version = "0.1.0"
 description = ""
 authors = [
@@ -11,9 +11,11 @@ dependencies = [
 ]
 
 [tool.poetry]
-packages = [{include = "pythoncli", from = "src"}]
+packages = [{include = "klickbrick", from = "src"}]
 
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+[project.scripts]
+klickbrick = 'klickbrick.klickbrick:start'
