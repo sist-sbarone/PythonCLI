@@ -3,6 +3,11 @@
 
 import argparse
 
+def hello(target):
+    hello_target = target if target else 'World'
+    return "Hello %s" % hello_target
+
+    
 def start():
     parser = argparse.ArgumentParser(description="This script executes a Hello World",  # main description for help
             epilog='Usage samples : \n\tpython klickbrick.py hello \n\n', formatter_class=argparse.RawTextHelpFormatter)  # displayed after help
@@ -16,9 +21,7 @@ def start():
 
 
     args = parser.parse_args()
-    
-    target = args.name if args.name else 'World'
-    print("Hello ", target)
+    print(hello(args.name))
     exit(0)
 
 if __name__ == "__main__":
