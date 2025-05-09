@@ -26,8 +26,8 @@ before_deploy:
   # API TOKEN environment variables is set 
   # as hidden variables through
   # the web interface in the project settings.
-  - pip install --upgrade pip
-  - pip install poetry
+  # - pip install --upgrade pip
+  # - pip install poetry
   - poetry config repositories.mypypi http://test.pypi.org/legacy
   - poetry config pypi-token.testpypi $MYPYPI_API_TOKEN
   - poetry build
@@ -39,5 +39,5 @@ deploy:
   on:
     all_branches: true  # Travis recognizes tag names as "branches"
     condition: $TRAVIS_BUILD_STAGE_NAME = Deploy
-    repo: daltonmaag/statmake  TO BE REPLACED BY MY REPO
+    repo: sist-barone/PythonCLI 
     tags: true
