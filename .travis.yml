@@ -42,4 +42,3 @@ deploy:
     # Travis recognizes tag names as "branches"
     condition: $TRAVIS_BUILD_STAGE_NAME = Deploy
     repo: sist-barone/PythonCLI
-    tags: true
