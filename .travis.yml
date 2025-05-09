@@ -1,3 +1,4 @@
+---
 language: python
 python: "3.10"
 dist: xenial
@@ -17,13 +18,13 @@ jobs:
       install:
         - poetry install -v
       script:
-        - python -m unittest 
+        - python -m unittest
     - stage: deploy
       script:
         - echo Deploying to PyPI...
 
 before_deploy:
-  # API TOKEN environment variables is set 
+  # API TOKEN environment variables is set
   # as hidden variables through
   # the web interface in the project settings.
   # - pip install --upgrade pip
@@ -37,7 +38,8 @@ deploy:
   script: poetry publish --repository testpypi
   skip_cleanup: true
   on:
-    all_branches: true  # Travis recognizes tag names as "branches"
+    all_branches: true
+    # Travis recognizes tag names as "branches"
     condition: $TRAVIS_BUILD_STAGE_NAME = Deploy
-    repo: sist-barone/PythonCLI 
+    repo: sist-barone/PythonCLI
     tags: true
