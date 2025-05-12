@@ -3,25 +3,15 @@ language: python
 python: "3.10"
 dist: xenial
 
-stages:
-  - test
-  - name: deploy
-    if: tag IS present
 
 
-jobs:
-  include:
-    - stage: test
-      before_install:
-        - pip install --upgrade pip
-        - pip install poetry
-      install:
-        - poetry install -v
-      script:
-        - python -m unittest
-    - stage: deploy
-      script:
-        - echo Deploying to PyPI...
+before_install:
+  - pip install --upgrade pip
+  - pip install poetry
+install:
+  - poetry install -v
+  script:
+    - python -m unittest
 
 before_deploy:
   # API TOKEN environment variables is set
@@ -35,7 +25,9 @@ before_deploy:
 
 deploy:
   provider: script
-  script: poetry publish --repository testpypi
+  script:         
+    - echo Deploying to PyPI...
+    - poetry publish --repository testpypi
   skip_cleanup: true
   on:
     all_branches: true
