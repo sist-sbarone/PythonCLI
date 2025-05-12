@@ -3,33 +3,37 @@ language: python
 python: "3.10"
 dist: xenial
 
+stages:
+  - Quality
+  - Publish
+
 before_install:
   - pip install --upgrade pip
   - pip install poetry
+
 install:
   - poetry install -v
 
-script:
-  - python -m unittest
-
-before_deploy:
-  # API TOKEN environment variables is set
-  # as hidden variables through
-  # the web interface in the project settings.
-  # - pip install --upgrade pip
-  # - pip install poetry
-  - poetry config repositories.mypypi http://test.pypi.org/legacy
-  - poetry config pypi-token.testpypi $MYPYPI_API_TOKEN
-  - poetry build
-
-deploy:
-  provider: script
-  script:
-    - echo Deploying to PyPI...
-    - poetry publish --repository testpypi
-  skip_cleanup: true
-  on:
-    all_branches: true
-    # Travis recognizes tag names as "branches"
-    condition: $TRAVIS_BUILD_STAGE_NAME = Deploy
-    repo: sist-barone/PythonCLI
+jobs:
+  include:
+    - stage: Quality
+      name: tests
+      script:
+        - python -m unittest
+    - stage: Publish
+      script: skip
+      before_deploy:
+        # API TOKEN environment variables is set
+        # as hidden variables through
+        # the web interface in the project settings.
+        # - pip install --upgrade pip
+        # - pip install poetry
+        - poetry config repositories.mypypi http://test.pypi.org/legacy
+        - poetry config pypi-token.testpypi $MYPYPI_API_TOKEN
+        - poetry build
+      deploy:
+        provider: script
+        script:
+          - echo Deploying to PyPI...
+          - poetry publish --repository testpypi
+        skip_cleanup: true
