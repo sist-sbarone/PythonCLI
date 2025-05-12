@@ -3,15 +3,14 @@ language: python
 python: "3.10"
 dist: xenial
 
-
-
 before_install:
   - pip install --upgrade pip
   - pip install poetry
 install:
   - poetry install -v
-  script:
-    - python -m unittest
+
+script:
+  - python -m unittest
 
 before_deploy:
   # API TOKEN environment variables is set
@@ -25,7 +24,7 @@ before_deploy:
 
 deploy:
   provider: script
-  script:         
+  script:
     - echo Deploying to PyPI...
     - poetry publish --repository testpypi
   skip_cleanup: true
