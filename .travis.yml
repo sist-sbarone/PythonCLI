@@ -38,3 +38,5 @@ jobs:
           - echo Deploying to PyPI...
           - poetry publish --repository testpypi
         skip_cleanup: true
+        on:
+          branch: main
