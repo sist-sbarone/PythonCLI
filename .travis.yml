@@ -36,7 +36,7 @@ jobs:
         provider: script
         script:
           - echo Deploying to PyPI...
-          - poetry publish --repository testpypi
+          - poetry publish -vv --repository testpypi
         skip_cleanup: true
         on:
           branch: main
