@@ -27,7 +27,7 @@ jobs:
         # API TOKEN environment variables is set
         # as hidden variables through
         # the web interface in the project settings.
-        - poetry config repositories.test-pypi http://test.pypi.org/legacy
+        - poetry config repositories.test-pypi http://test.pypi.org/legacy/
         - poetry config pypi-token.test-pypi $MYPYPI_API_TOKEN
         - poetry build
       deploy:
