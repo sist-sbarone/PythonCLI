@@ -34,7 +34,7 @@ jobs:
         provider: script
         script:
           - echo Deploying to PyPI...
-          - poetry publish -vv --repository=testpypi
+          - poetry publish -vv --repository testpypi
           - echo Deployed.
         on:
           branch: main
