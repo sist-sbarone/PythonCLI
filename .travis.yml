@@ -36,5 +36,3 @@ jobs:
           - echo Deploying to PyPI...
           - poetry publish -vv --repository testpypi
           - echo Deployed.
-        on:
-          branch: main
