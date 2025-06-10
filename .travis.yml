@@ -1,4 +1,5 @@
 ---
+version: ~> 1.0
 language: python
 python: "3.10"
 dist: jammy
@@ -22,7 +23,7 @@ jobs:
       script:
         - python -m unittest
     - stage: Publish
-      # script: skip
+      script: skip
       before_deploy:
         # API TOKEN environment variables is set
         # as hidden variables through
