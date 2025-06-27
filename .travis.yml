@@ -39,5 +39,3 @@ jobs:
         cleanup: false
         on:
           branch: main
-          tags: true
-      if: tag IS present
