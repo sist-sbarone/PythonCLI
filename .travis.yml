@@ -23,6 +23,8 @@ jobs:
       script:
         - python -m unittest
     - stage: Publish
+      name: deploy_Pypi
+      script: skip
       before_deploy:
         # API TOKEN environment variables is set
         # as hidden variables through
@@ -35,7 +37,8 @@ jobs:
         script:
           - echo Deploying to PyPI...
           - poetry publish -vvv --repository testpypi
-          - echo Deployed.
         cleanup: false
         on:
           branch: main
+      after_deploy:
+        - echo "Deploy completed"
