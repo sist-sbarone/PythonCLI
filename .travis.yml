@@ -23,7 +23,6 @@ jobs:
       script:
         - python -m unittest
     - stage: Publish
-      script: skip
       before_deploy:
         # API TOKEN environment variables is set
         # as hidden variables through
